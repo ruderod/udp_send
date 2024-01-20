@@ -1,0 +1,19 @@
+// See https://aka.ms/new-console-template for more information
+using System.Net.Sockets;
+using System.Text;
+
+Console.WriteLine("Hello, World! Here is my UDP hack.  ");
+int Sendr;
+Sendr = 44;
+Console.WriteLine("I would like to send variable Sendr which right now is " + Sendr);
+//   (byte[] Sendr, int bytes, string? hostname, int port);
+
+UdpClient udpClient = new UdpClient();
+int DiD;
+
+for (int Di = 0; Di < 80; Di++)
+{
+    Console.WriteLine("sending one packet");
+    Byte[] sendBytes = Encoding.ASCII.GetBytes("Is anybody there.  Is anybody there?" + Di + Sendr );
+    udpClient.Send(sendBytes, sendBytes.Length, "www.int0.me", 11000);
+}
